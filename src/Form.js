@@ -11,20 +11,20 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 
 export default function Form() {
-  const bgColor = 'gray'
+  const bgColor = '#ffffff'
   return (
-    <Box bgColor={bgColor} p={3} w="100%" boxShadow="lg" borderRadius="lg">
-      <Tabs isFitted>
-        <TabList>
-          <Tab _focus={{ boxShadow: "none" }}>注册</Tab>
-          <Tab _focus={{ boxShadow: "none" }}>登录</Tab>
+    <Box bgColor={bgColor} p="30px 30px 30px 30px" w="400px" h="500px" boxShadow="lg" borderRadius="lg">
+      <Tabs isFitted colorScheme="orange">
+        <TabList m="0 80px 30px 80px">
+          <Tab fontSize="120%" fontWeight="bold" _focus={{ boxShadow: "none" }}>登录</Tab>
+          <Tab fontSize="120%" fontWeight="bold" _focus={{ boxShadow: "none" }}>注册</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SignUp />
+            <SignIn />
           </TabPanel>
           <TabPanel>
-            <SignIn />
+            <SignUp />
           </TabPanel>
         </TabPanels>
       </Tabs>
