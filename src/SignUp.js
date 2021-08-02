@@ -32,6 +32,10 @@ export default function SignUp() {
   
     await signUp(data)
     setLoading(false)
+    setNickname('')
+    setUsername('')
+    setPassword('')
+    window.alert('finish!')
   }
 
   return (

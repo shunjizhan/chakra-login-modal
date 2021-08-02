@@ -35,6 +35,9 @@ export default function SignIn() {
 
     await login(data);
     setLoading(false)
+    setUsername('')
+    setPassword('')
+    window.alert('finish!')
   }
 
   return (
