@@ -5,23 +5,33 @@ import {
   Stack,
   InputLeftAddon,
   InputRightAddon,
-  FormHelperText,
-  RadioGroup,
-  Radio,
-  Select,
   Button,
   FormControl
 } from "@chakra-ui/core";
 import { FaUserAlt, FaLock, FaCheck, FaPhone } from "react-icons/fa";
 
+import { signUp } from './api/user';
+
 export default function SignUp() {
   const [nickname, setNickname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log(nickname, username, password);
+    setLoading(true)
+
+    const data = {
+      user:{
+        username: nickname,
+        email: username,
+        password,
+      }
+    };
+  
+    await signUp(data)
+    setLoading(false)
   }
 
   return (
@@ -42,8 +52,8 @@ export default function SignUp() {
             <InputRightAddon children={<FaCheck />} />
           </InputGroup>
         </FormControl>
-        <Button _hover={{ bgColor: "#42c021bb" }} w="100%" h="45px" borderRadius="20px" bgColor="#42c021" color="white" padding="9px 18px" type="submit">
-          登录
+        <Button _hover={{ bgColor: "#42c021bb" }} w="100%" h="45px" borderRadius="20px" bgColor="#42c021" color="white" padding="9px 18px" type="submit" disabled={ loading }>
+          { loading ? "注册中……" : "注册" }
         </Button>
       </Stack>
     </form>
